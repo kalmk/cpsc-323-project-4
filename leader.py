@@ -22,22 +22,27 @@ def find_target_of_goto(line):
     return line_num
 
 def find_leaders(tac_code):
+    lines_of_code = len(tac_code)
+    print(f"length of tac code = {lines_of_code}")
     leaders = []
-    next_line_leader = False
-    # Find leaders
-    for line_num, line in tac_code.items():
-        if ((next_line_leader) and (line_num not in leaders)):
-            leaders.append(line_num)
-            next_line_leader = False
 
+    for line_num, line in tac_code.items():
+        # Check if first line
         if (line_num == 1):
             leaders.append(line_num)
+
+        # Check if we have a 'goto' in line
         if ("goto" in line):
             # Check target of goto statement
             target_line_num = find_target_of_goto(line)
             # print(target_line_num)
-            leaders.append(target_line_num)
-            next_line_leader = True
+            if (target_line_num not in leaders):
+                leaders.append(target_line_num)
+
+            # Check if next line exists
+            if (((line_num + 1) <= lines_of_code) and ((line_num + 1) not in leaders)):
+                leaders.append(line_num + 1)
 
     # print(leaders)
+    leaders.sort()
     return leaders
