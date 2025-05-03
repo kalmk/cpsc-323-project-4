@@ -1,0 +1,4 @@
+T1 = a + b
+if T1 < T2 goto 10
+goto 5
+T3 = T2 - T1
