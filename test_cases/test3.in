@@ -1,0 +1,30 @@
+i = m - 1
+j = n
+T1 = 4 * n
+v = a[T1]
+i = i + 1
+T2 = 4 * i
+T3 = a[T2]
+if T3 < v goto 5
+j = j - 1
+T4 = 4 * j
+T5 = a[T4]
+if T5 > v goto 9
+if i >= j goto 23
+T6 = 4 * i
+x = a[T6]
+T7 = 4 * i
+T8 = 4 * j
+T9 = a[T8]
+a[T7] = T9
+T10 = 4 * j
+a[T10] = x
+goto 5
+T11 = 4 * i
+x = a[T11]
+T12 = 4 * i
+T13 = 4 * n
+T14 = a[T13]
+a[T12] = T14
+T15 = 4 * n
+a[T15] = x

@@ -1,30 +1,17 @@
-i = m - 1
-j = n
-t1 = 4 * n
-v = a[t1]
+i = 1
+j = 1
+T1 = 10 * i
+T2 = T1 + j
+T3 = 8 * T2
+T4 = T3 - 88
+a[T4] = 0.0
+j = j + 1
+if j <= 10 goto 3
 i = i + 1
-t2 = 4 * i
-t3 = a[t2]
-if t3 < v goto 5
-j = j - 1
-t4 = 4 * j
-t5 = a[t4]
-if t5 > v goto 9
-if i > j goto 23
-t6 = 4 * i
-x = a[t6]
-t7 = 4 * i
-t8 = 4 * j
-t9 = a[t8]
-a[t7] = t9
-t10 = 4 * j
-a[t10] = x
-goto 5
-t11 = 4 * i
-x = a[t11]
-t12 = 4 * i
-t13 = 4 * n
-t14 = a[t13]
-a[t12] = t14
-t15 = 4 * n
-a[t15] = x
+if i <= 10 goto 2
+i = 1
+T5 = i - 1
+T6 = 88 * T5
+a[T6] = 1.0
+i = i + 1
+if i <= 10 goto 13

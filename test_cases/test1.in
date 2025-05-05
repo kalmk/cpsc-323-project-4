@@ -1,4 +1,32 @@
-T1 = a + b
-if T1 < T2 goto 10
+i = n
+if i < 2 then goto 32
+jmax = 1
+j = 2
+if j > 1 then goto 16
+T1 = j - 1
+T2 = T1 * 4
+T3 = x[T2]
+T4 = jmax - 1
+T5 = T4 * 4
+T6 = x[T5]
+if T3 <= T6 then goto 14
+jmax = j
+j = j + 1
 goto 5
-T3 = T2 - T1
+if jmax = i then goto 30
+T7 = i - 1
+T8 = T7 * 4
+T9 = x[T8]
+temp = T9
+T10 = jmax - 1
+T11 = T10 * 4
+T12 = x[T11]
+T13 = i - 1
+T14 = T13 * 4
+x[T14] = T12
+T15 = jmax - 1
+T16 = T15 * 4
+x[T16] = temp
+i = i - 1
+goto 2
+return
