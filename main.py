@@ -5,7 +5,7 @@ from cfg_builder import build_cfg
 
 if (__name__ == "__main__"):
     tac_code = {}
-    filename = 'test_cases/our_test2.in'
+    filename = 'test_cases/test1.in'
 
     # Read lines from input and store them
     with open(filename, 'r') as file:
@@ -42,12 +42,12 @@ if (__name__ == "__main__"):
     for index, block in enumerate(blocks):
         print(f"Block {index + 1}:")
         print(block)
+    # Unsure if I should stick this step into the if conditional above, can talk about it tonight
+
+    # Step 3:
+    cfg = build_cfg(blocks, leaders)
     
 
-# Unsure if I should stick this step into the if conditional above, can talk about it tonight
-
-# Step 3:
-cfg = build_cfg(blocks, sorted_leaders)
 
 # Print CFG, 
 print("\n=== Control Flow Graph ===")
