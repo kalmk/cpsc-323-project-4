@@ -42,14 +42,9 @@ if (__name__ == "__main__"):
     for index, block in enumerate(blocks):
         print(f"Block {index + 1}:")
         print(block)
-    # Unsure if I should stick this step into the if conditional above, can talk about it tonight
 
     # Step 3:
     cfg = build_cfg(blocks, leaders)
-    
-
-
-# Print CFG, 
-print("\n=== Control Flow Graph ===")
-for block_num, successors in cfg.items():
-    print(f"Block {block_num} -> {successors}")
+    print("\n=== Control Flow Graph ===")
+    for block_num, successors in cfg.items():
+        print(f"Block {block_num} -> {successors}")
