@@ -74,13 +74,13 @@ if (__name__ == "__main__"):
         block.gen_sets = gen[index + 1]
         block.kill_sets = kill[index + 1]
 
-    # display nodes in the array
-    for i in list_of_block_nodes:
-        print(i)
-        print("-----")
-
     # compute reaching definition for forward data flow analysis
     forward_analysis(list_of_block_nodes)
+
+     # display nodes in the array
+    # for i in list_of_block_nodes:
+    #     print(i)
+    #     print("-----")
 
     
 
