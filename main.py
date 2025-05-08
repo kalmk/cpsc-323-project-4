@@ -1,8 +1,8 @@
 # CPSC 323
 # Project 4
 from leader import *
-from cfg_builder import build_cfg
 from block import *
+from link_blocks import *
 
 if (__name__ == "__main__"):
     tac_code = {}
@@ -18,7 +18,8 @@ if (__name__ == "__main__"):
 
     # Find Leaders
     leaders = find_leaders(tac_code)
-    # print(leaders)
+    # print(f"leaders: {leaders}")
+    # print(f"size: {len(leaders)}")
 
     # Find Blocks
     blocks = []
@@ -41,8 +42,7 @@ if (__name__ == "__main__"):
     
     # Print out all blocks
     # for index, block in enumerate(blocks):
-    #     print(f"Block {index + 1}:")
-    #     print(block)
+    #     print(f"Block {index + 1}: {block}")
 
     # print(blocks)
 
@@ -52,14 +52,19 @@ if (__name__ == "__main__"):
         block_node = Block(i + 1, array_of_instruc)
         list_of_block_nodes.append(block_node)
 
-    for node in list_of_block_nodes:
-        print(f"{node.block_number}: {node.instructions}")
+    # starting number for each blocks (line number for leaders)
+    for index_for_leaders, block in enumerate(list_of_block_nodes):
+        block.start_line_number = leaders[index_for_leaders]
 
-    # TO DO: instantiate each node with successor and predecessor to link nodes together
+    # links successors and predecessors for each block via jump targets, and fall throughs
+    link_blocks(list_of_block_nodes)
+
+    # check each node information
+    for i in list_of_block_nodes:
+        print(i)
+        print("-----")
 
 
-    # Step 3:
-    # cfg = build_cfg(blocks, leaders)
-    # print("\n=== Control Flow Graph ===")
-    # for block_num, successors in cfg.items():
-    #     print(f"Block {block_num} -> {successors}")
+
+    
+

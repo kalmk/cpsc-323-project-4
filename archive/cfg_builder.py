@@ -47,3 +47,8 @@ def build_cfg(blocks, leaders):
 
 
 
+    # Step 3:
+    # cfg = build_cfg(blocks, leaders)
+    # print("\n=== Control Flow Graph ===")
+    # for block_num, successors in cfg.items():
+    #     print(f"Block {block_num} -> {successors}")
