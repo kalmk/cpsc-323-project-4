@@ -74,20 +74,13 @@ if (__name__ == "__main__"):
         block.gen_sets = gen[index + 1]
         block.kill_sets = kill[index + 1]
 
-    # for each block, we initialize in sets and out sets to prepare for reaching definitions
-    in_sets, out_sets = get_in_out_sets(list_of_block_nodes)
-    for index, block in enumerate(list_of_block_nodes):
-        block.in_sets = in_sets[index + 1]
-        block.out_sets = out_sets[index + 1]
-
     # display nodes in the array
     for i in list_of_block_nodes:
         print(i)
         print("-----")
 
-    # with gen, kill, in, out sets ready, compute reaching definition for forward data flow analysis
-
-    # forward_analysis(list_of_block_nodes)
+    # compute reaching definition for forward data flow analysis
+    forward_analysis(list_of_block_nodes)
 
     
 
