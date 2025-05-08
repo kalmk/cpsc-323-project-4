@@ -60,9 +60,13 @@ if (__name__ == "__main__"):
     link_blocks(list_of_block_nodes)
 
     # check each node information
-    for i in list_of_block_nodes:
-        print(i)
-        print("-----")
+    # for i in list_of_block_nodes:
+    #     print(i)
+    #     print("-----")
+
+    
+
+
 
 
 
