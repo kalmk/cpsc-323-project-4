@@ -1,10 +1,10 @@
 class Block:
     def __init__(self, block_number, instructions):
         self.block_number = block_number
-        self.instructions = instructions # array
+        self.instructions = instructions  # array
         self.start_line_number = 0
-        self.successors = []  
-        self.predecessors = []  
+        self.successors = []
+        self.predecessors = []
         self.gen_sets = set()
         self.kill_sets = set()
         self.in_sets = set()

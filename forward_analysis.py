@@ -16,7 +16,7 @@ def forward_analysis(list_of_block_nodes):
         changed = False
         print(f"\n\niteration: {iteration}")
         for block in list_of_block_nodes:
-            print("-------------")
+            print("----------------------------------------")
             print(f"Block {block.block_number}")
             new_in_sets = set()
             for predecessor in block.predecessors:

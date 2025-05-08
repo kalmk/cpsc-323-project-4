@@ -37,13 +37,13 @@ if (__name__ == "__main__"):
                 block += [lines[i]]
 
             blocks.append(block)
-        
+
         # Still need to append last block
         block = []
         for i in range(leaders[-1] - 1, len(tac_code)):
             block += [lines[i]]
         blocks.append(block)
-    
+
     # Print out all blocks
     # for index, block in enumerate(blocks):
     #     print(f"Block {index + 1}: {block}")
@@ -51,7 +51,7 @@ if (__name__ == "__main__"):
     # print(blocks)
 
     ####################################################################################################################
-    # TO DO: Implement data flow analysis using the CFG: forward
+    # TO DO: Implement data flow analysis using the CFG: forward, reaching definitions
     list_of_block_nodes = []
 
     # instantiate blocks with line number and its instructions and append to array
@@ -67,7 +67,8 @@ if (__name__ == "__main__"):
     link_blocks(list_of_block_nodes)
 
     all_definitions = get_definitions(list_of_block_nodes)
-    gen, kill = get_gen_kill_sets(list_of_block_nodes, all_definitions) # {1: {(X, num)}, etc..} key: value
+    # {1: {(X, num)}, etc..} key: value
+    gen, kill = get_gen_kill_sets(list_of_block_nodes, all_definitions)
 
     # instantiate gen and kill sets to each block
     for index, block in enumerate(list_of_block_nodes):
@@ -77,10 +78,7 @@ if (__name__ == "__main__"):
     # compute reaching definition for forward data flow analysis
     forward_analysis(list_of_block_nodes)
 
-     # display nodes in the array
-    # for i in list_of_block_nodes:
-    #     print(i)
-    #     print("-----")
+    ####################################################################################################################
+    # TO DO: Implement data flow analysis using the CFG: backward, live variables
 
     
-
