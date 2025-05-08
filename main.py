@@ -3,6 +3,10 @@
 from leader import *
 from block import *
 from link_blocks import *
+from get_definitions import *
+from get_gen_kill_sets import *
+from get_in_out_sets import *
+from forward_analysis import *
 
 if (__name__ == "__main__"):
     tac_code = {}
@@ -59,19 +63,32 @@ if (__name__ == "__main__"):
     # links successors and predecessors for each block via jump targets, and fall throughs
     link_blocks(list_of_block_nodes)
 
-    # check each node information
-    # for i in list_of_block_nodes:
-    #     print(i)
-    #     print("-----")
+    # TO DO: Implement data flow analysis using the CFG: forward
 
-    # TO DO: Implement data flow analysis using the CFG: forward and backward.
+    all_definitions = get_definitions(list_of_block_nodes)
 
-    
+    gen, kill = get_gen_kill_sets(list_of_block_nodes, all_definitions) # {1: {(X, num)}, etc..} key: value
 
+    # assign gen and kill sets to each block
+    for index, block in enumerate(list_of_block_nodes):
+        block.gen_sets = gen[index + 1]
+        block.kill_sets = kill[index + 1]
 
+    # for each block, we initialize in sets and out sets to prepare for reaching definitions
+    # in[B] is empty
+    # out[B] is equal to gen[B]
+    in_sets, out_sets = get_in_out_sets(list_of_block_nodes)
+    for index, block in enumerate(list_of_block_nodes):
+        block.in_sets = in_sets[index + 1]
+        block.out_sets = out_sets[index + 1]
 
+    for i in list_of_block_nodes:
+        print(i)
+        print("-----")
 
+    # TO DO with gen, kill, in, out sets ready, compute reaching definition for forward data flow analysis
 
+    # forward_analysis(list_of_block_nodes)
 
     
 

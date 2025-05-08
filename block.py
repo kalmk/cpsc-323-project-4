@@ -5,12 +5,20 @@ class Block:
         self.start_line_number = 0
         self.successors = []  
         self.predecessors = []  
+        self.gen_sets = set()
+        self.kill_sets = set()
+        self.in_sets = set()
+        self.out_sets = set()
 
     def __str__(self):
         return (
-            f"Block Number: {self.block_number}\n"
-            f"Instructions: {self.instructions}\n"
-            f"Start Line Number: {self.start_line_number}\n"
-            f"Successors: {self.successors}\n"
-            f"Predecessors: {self.predecessors}"
+            f"block Number: {self.block_number}\n"
+            f"instructions: {self.instructions}\n"
+            f"start Line Number: {self.start_line_number}\n"
+            f"successors: {[b.block_number for b in self.successors]}\n"
+            f"predecessors: {[b.block_number for b in self.predecessors]}\n"
+            f"gen set: {self.gen_sets}\n"
+            f"kill set: {self.kill_sets}\n"
+            f"in set: {self.in_sets}\n"
+            f"out set: {self.out_sets}\n"
         )
