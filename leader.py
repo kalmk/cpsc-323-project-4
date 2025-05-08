@@ -23,7 +23,7 @@ def find_target_of_goto(line):
 
 def find_leaders(tac_code):
     lines_of_code = len(tac_code)
-    print(f"length of tac code = {lines_of_code}")
+    # print(f"length of tac code = {lines_of_code}")
     leaders = []
 
     for line_num, line in tac_code.items():

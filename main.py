@@ -2,6 +2,7 @@
 # Project 4
 from leader import *
 from cfg_builder import build_cfg
+from block import *
 
 if (__name__ == "__main__"):
     tac_code = {}
@@ -17,7 +18,7 @@ if (__name__ == "__main__"):
 
     # Find Leaders
     leaders = find_leaders(tac_code)
-    print(leaders)
+    # print(leaders)
 
     # Find Blocks
     blocks = []
@@ -39,12 +40,26 @@ if (__name__ == "__main__"):
         blocks.append(block)
     
     # Print out all blocks
-    for index, block in enumerate(blocks):
-        print(f"Block {index + 1}:")
-        print(block)
+    # for index, block in enumerate(blocks):
+    #     print(f"Block {index + 1}:")
+    #     print(block)
+
+    # print(blocks)
+
+    # instantiate blocks with line number and its instructions
+    list_of_block_nodes = []
+    for i, array_of_instruc in enumerate(blocks):
+        block_node = Block(i + 1, array_of_instruc)
+        list_of_block_nodes.append(block_node)
+
+    for node in list_of_block_nodes:
+        print(f"{node.block_number}: {node.instructions}")
+
+    # TO DO: instantiate each node with successor and predecessor to link nodes together
+
 
     # Step 3:
-    cfg = build_cfg(blocks, leaders)
-    print("\n=== Control Flow Graph ===")
-    for block_num, successors in cfg.items():
-        print(f"Block {block_num} -> {successors}")
+    # cfg = build_cfg(blocks, leaders)
+    # print("\n=== Control Flow Graph ===")
+    # for block_num, successors in cfg.items():
+    #     print(f"Block {block_num} -> {successors}")
