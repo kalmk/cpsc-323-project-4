@@ -50,43 +50,42 @@ if (__name__ == "__main__"):
 
     # print(blocks)
 
-    # instantiate blocks with line number and its instructions
+    ####################################################################################################################
+    # TO DO: Implement data flow analysis using the CFG: forward
     list_of_block_nodes = []
+
+    # instantiate blocks with line number and its instructions and append to array
     for i, array_of_instruc in enumerate(blocks):
         block_node = Block(i + 1, array_of_instruc)
         list_of_block_nodes.append(block_node)
 
-    # starting number for each blocks (line number for leaders)
+    # instantiate starting number for each blocks (line number for leaders)
     for index_for_leaders, block in enumerate(list_of_block_nodes):
         block.start_line_number = leaders[index_for_leaders]
 
     # links successors and predecessors for each block via jump targets, and fall throughs
     link_blocks(list_of_block_nodes)
 
-    # TO DO: Implement data flow analysis using the CFG: forward
-
     all_definitions = get_definitions(list_of_block_nodes)
-
     gen, kill = get_gen_kill_sets(list_of_block_nodes, all_definitions) # {1: {(X, num)}, etc..} key: value
 
-    # assign gen and kill sets to each block
+    # instantiate gen and kill sets to each block
     for index, block in enumerate(list_of_block_nodes):
         block.gen_sets = gen[index + 1]
         block.kill_sets = kill[index + 1]
 
     # for each block, we initialize in sets and out sets to prepare for reaching definitions
-    # in[B] is empty
-    # out[B] is equal to gen[B]
     in_sets, out_sets = get_in_out_sets(list_of_block_nodes)
     for index, block in enumerate(list_of_block_nodes):
         block.in_sets = in_sets[index + 1]
         block.out_sets = out_sets[index + 1]
 
+    # display nodes in the array
     for i in list_of_block_nodes:
         print(i)
         print("-----")
 
-    # TO DO with gen, kill, in, out sets ready, compute reaching definition for forward data flow analysis
+    # with gen, kill, in, out sets ready, compute reaching definition for forward data flow analysis
 
     # forward_analysis(list_of_block_nodes)
 

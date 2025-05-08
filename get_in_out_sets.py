@@ -1,4 +1,7 @@
 def get_in_out_sets(list_of_block_nodes):
+    # in[B] is empty
+    # out[B] is equal to gen[B]
+    
     in_sets = {}
     out_sets = {}
 
