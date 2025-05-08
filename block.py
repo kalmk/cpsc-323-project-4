@@ -12,9 +12,9 @@ class Block:
 
     def __str__(self):
         return (
-            f"block Number: {self.block_number}\n"
+            f"block number: {self.block_number}\n"
             f"instructions: {self.instructions}\n"
-            f"start Line Number: {self.start_line_number}\n"
+            f"start line Number: {self.start_line_number}\n"
             f"successors: {[b.block_number for b in self.successors]}\n"
             f"predecessors: {[b.block_number for b in self.predecessors]}\n"
             f"gen set: {self.gen_sets}\n"
