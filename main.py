@@ -7,6 +7,7 @@ from get_definitions import *
 from get_gen_kill_sets import *
 from get_in_out_sets import *
 from forward_analysis import *
+from output_cfg import *
 
 if (__name__ == "__main__"):
     tac_code = {}
@@ -51,7 +52,7 @@ if (__name__ == "__main__"):
     # print(blocks)
 
     ####################################################################################################################
-    # TO DO: Implement data flow analysis using the CFG: forward, reaching definitions
+    # TO DO: implement data flow analysis using the CFG: forward, reaching definitions
     list_of_block_nodes = []
 
     # instantiate blocks with line number and its instructions and append to array
@@ -68,7 +69,7 @@ if (__name__ == "__main__"):
 
     all_definitions = get_definitions(list_of_block_nodes)
 
-    # reminder: 
+    # reminder:
     #           GEN = new definitions in the block
     #           KILL = definitions from other blocks of the same variable as the current block's GEN
     gen, kill = get_gen_kill_sets(list_of_block_nodes, all_definitions)
@@ -85,6 +86,13 @@ if (__name__ == "__main__"):
     forward_analysis(list_of_block_nodes)
 
     ####################################################################################################################
-    # TO DO: Implement data flow analysis using the CFG: backward, live variables
+    # TO DO: implement data flow analysis using the CFG: backward, live variables
 
-    
+    ####################################################################################################################
+    # TO DO: output CFG
+
+    # CFG is a graph, not a tree.
+    # therefore, printing as a ASCII tree like project 2 would not be appropriate.
+    # block is reached from multiple paths and are not linear
+
+    output_cfg(list_of_block_nodes)
