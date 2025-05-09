@@ -67,13 +67,19 @@ if (__name__ == "__main__"):
     link_blocks(list_of_block_nodes)
 
     all_definitions = get_definitions(list_of_block_nodes)
-    # {1: {(X, num)}, etc..} key: value
+
+    # reminder: 
+    #           GEN = new definitions in the block
+    #           KILL = definitions from other blocks of the same variable as the current block's GEN
     gen, kill = get_gen_kill_sets(list_of_block_nodes, all_definitions)
+    # print(kill)
 
     # instantiate gen and kill sets to each block
     for index, block in enumerate(list_of_block_nodes):
         block.gen_sets = gen[index + 1]
         block.kill_sets = kill[index + 1]
+
+    # print(gen[5])
 
     # compute reaching definition for forward data flow analysis
     forward_analysis(list_of_block_nodes)

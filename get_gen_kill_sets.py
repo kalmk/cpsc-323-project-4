@@ -13,7 +13,7 @@ def get_gen_kill_sets(list_of_block_nodes, all_definitions):
         kill_set = set()
 
         # print("----------------")
-        # print(f"{block}\n")
+        # print(f"{block.block_number}\n")
 
         for index, instruction in enumerate(block.instructions):
             instruction = instruction.strip()

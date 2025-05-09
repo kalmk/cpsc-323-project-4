@@ -10,22 +10,24 @@ def forward_analysis(list_of_block_nodes):
 
     iteration = 1
 
-    #############################################  start
+    #  start
     changed = True
     while changed:
         changed = False
         print(f"\n\niteration: {iteration}")
         for block in list_of_block_nodes:
             print("----------------------------------------")
-            print(f"Block {block.block_number}")
             new_in_sets = set()
             for predecessor in block.predecessors:
-                new_in_sets |= predecessor.out_sets
+                new_in_sets = new_in_sets.union(predecessor.out_sets)
 
             new_out_sets = block.gen_sets | (new_in_sets - block.kill_sets)
 
-            print(f"new in sets: {new_in_sets}")
-            print(f"new out sets: {new_out_sets}")
+            print(f"Block {block.block_number}")
+            in_lines = sorted(set(line for _, line in block.in_sets))
+            out_lines = sorted(set(line for _, line in block.out_sets))
+            print(f"  IN:  {in_lines}")
+            print(f"  OUT: {out_lines}")
 
             if new_in_sets != block.in_sets or new_out_sets != block.out_sets:
                 changed = True
