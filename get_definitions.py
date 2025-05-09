@@ -16,13 +16,12 @@ def get_definitions(list_of_block_nodes):
             # print(f"instruction: {instruction}")
 
             # match assignments such as X = Y; returns None if no assignments
-            assignment_match = re.match(r'(\w+)\s*=', instruction) # Note: it matches stuff only like T1 but for x[T16], it doesnt
+            assignment_match = re.match(r'(\w+)\s*=', instruction)
             # print(f"match: {assignment_match}")
             if assignment_match:
                 variable_lhs = assignment_match.group(1) # for example, J = X; J is the lhs
                 # print(f"variable: {variable_lhs}")
                 # print(f"index: {index}")
-                # line_number = block.start_line_number + (index + 1)
                 line_number = block.start_line_number + index
                 # print(f"line_number for that instruction: {line_number}")
                 definitions.add((variable_lhs, line_number))

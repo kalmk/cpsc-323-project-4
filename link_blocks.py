@@ -22,7 +22,7 @@ def link_blocks(list_of_block_nodes):
         if last_instruction == "return":
             continue # because no successors
         if match_unconditional_goto:
-            block_num_to_jump = int(match_unconditional_goto.group(1)) # if it is "goto 5", it gets block number 5
+            block_num_to_jump = int(match_unconditional_goto.group(1)) # if it is "goto 5", it gets 5
 
             for candidate in list_of_block_nodes:
                 if candidate.start_line_number == block_num_to_jump:
@@ -32,7 +32,7 @@ def link_blocks(list_of_block_nodes):
                     break 
 
         if match_conditional_goto:
-            block_num_to_jump = int(match_conditional_goto.group(1)) # if it is "goto 5", it gets block number 5
+            block_num_to_jump = int(match_conditional_goto.group(1)) # if it is "goto 5", it gets 5
 
             for candidate in list_of_block_nodes:
                 if candidate.start_line_number == block_num_to_jump:
