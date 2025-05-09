@@ -19,7 +19,8 @@ def forward_analysis(list_of_block_nodes):
             print("----------------------------------------")
             new_in_sets = set()
             for predecessor in block.predecessors:
-                new_in_sets = new_in_sets.union(predecessor.out_sets)
+                # new_in_sets = new_in_sets.union(predecessor.out_sets)
+                new_in_sets |= predecessor.out_sets # or this
 
             new_out_sets = block.gen_sets | (new_in_sets - block.kill_sets)
 
