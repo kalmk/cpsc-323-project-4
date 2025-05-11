@@ -48,4 +48,4 @@ def backward_analysis(list_of_block_nodes):
 
         iteration += 1
 
-    print("\nBackward Analysis done.")
+    print("\n\nBackward Analysis done.")
