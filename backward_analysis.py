@@ -18,7 +18,7 @@ def backward_analysis(list_of_block_nodes):
     iteration = 1
     #  start
     print("========================================================================")
-    print("Forward Analysis")
+    print("Backward Analysis")
     changed = True
     while changed:
         changed = False
@@ -28,7 +28,7 @@ def backward_analysis(list_of_block_nodes):
             new_out_sets = set()
 
             # Ask if this needs to be reversed
-            for successor in block.successors:
+            for successor in reversed(block.successors):
                 # new_in_sets = new_in_sets.union(predecessor.out_sets)
                 new_out_sets |= successor.in_sets  # or this
             
