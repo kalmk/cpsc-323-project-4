@@ -17,9 +17,12 @@ def get_used_sets(list_of_block_nodes):
                 lhs = match.group(1)
                 rhs = match.group(2)
 
+                line_number = block.start_line_number + index
+
                 # Identify used variables (before they are defined)
                 rhs_vars = set(re.findall(r"\b[a-zA-Z_]\w*\b", rhs))
-                used_set.update(rhs_vars - defined_set)
+                used_set.update((var, line_number) for var in rhs_vars if var not in defined_set)
+
 
                 # Mark LHS as defined
                 defined_set.add(lhs)
