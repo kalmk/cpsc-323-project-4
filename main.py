@@ -5,8 +5,10 @@ from block import *
 from link_blocks import *
 from get_definitions import *
 from get_gen_kill_sets import *
+from get_used_sets import *
 from get_in_out_sets import *
 from forward_analysis import *
+from backward_analysis import *
 from output_cfg import *
 
 if (__name__ == "__main__"):
@@ -73,12 +75,14 @@ if (__name__ == "__main__"):
     #           GEN = new definitions in the block
     #           KILL = definitions from other blocks of the same variable as the current block's GEN
     gen, kill = get_gen_kill_sets(list_of_block_nodes, all_definitions)
+    used = get_used_sets(list_of_block_nodes)
     # print(kill)
 
-    # instantiate gen and kill sets to each block
+    # instantiate gen, kill, and used sets to each block
     for index, block in enumerate(list_of_block_nodes):
         block.gen_sets = gen[index + 1]
         block.kill_sets = kill[index + 1]
+        block.used_sets = used[index + 1]
 
     # print(gen[5])
 
@@ -87,6 +91,7 @@ if (__name__ == "__main__"):
 
     ####################################################################################################################
     # TO DO: implement data flow analysis using the CFG: backward, live variables
+    backward_analysis(list_of_block_nodes)
 
     ####################################################################################################################
     # TO DO: output CFG

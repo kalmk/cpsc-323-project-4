@@ -5,6 +5,7 @@ class Block:
         self.start_line_number = 0
         self.successors = []
         self.predecessors = []
+        self.used_sets = set()
         self.gen_sets = set()
         self.kill_sets = set()
         self.in_sets = set()
